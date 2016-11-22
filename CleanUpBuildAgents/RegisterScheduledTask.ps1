@@ -1,8 +1,8 @@
-﻿
-New-Item -ItemType Directory -Force -Path C:\Users\srv_TFSBuild_DT\Desktop\CleanUp
+﻿$logPath = [Environment]::GetFolderPath("Desktop") + "\CleanUp\"
+New-Item -ItemType Directory -Force -Path $logPath
 
 $action = New-ScheduledTaskAction -Execute 'Powershell' `
-  -Argument '.\CleanUpBuild.ps1' -WorkingDirectory 'C:\TFS-Administration-Scripts\CleanUpBuildAgents'
+  -Argument '.\CleanUpBuild.ps1' -WorkingDirectory (Get-Item -Path ".\" -Verbose).FullName
 
 $trigger =  New-ScheduledTaskTrigger -Daily -At 3am
 
