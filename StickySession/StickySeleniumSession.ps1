@@ -26,7 +26,7 @@ if((get-date).hour -gt 2 -and (get-date).hour -lt 7)
 {
     $logTime = Get-Date
     -join ($logTime, ' - ', "No sessions during the dead of night")
-    $isActive = 0
+    $isActive = 1
 }
 
 if($isActive -eq 0) {
